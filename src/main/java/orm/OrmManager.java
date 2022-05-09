@@ -3,6 +3,10 @@ package orm;
 import client.model.entity.Animal;
 import client.model.entity.Zoo;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+
 public class OrmManager {
     public OrmManager(String schemaName) {
         // using schemaName as a key find in
@@ -23,8 +27,22 @@ public class OrmManager {
     public <T> T load(Object id, Class<T> entityClass) {
         // from DB find the row with PK = id in the table
         // where the objects of given type reside
-        return null;
+        // if the object has not been found throw ObjectNotFoundException
+        throw new ObjectNotFoundException("details");
     }
+
+    public <T> Optional<T> find(Class<T> entityClass, Object id) {
+        return Optional.empty();
+    }
+
+    public <T> Collection<T> findAll(Class<T> entityClass) {
+        return Collections.emptyList();
+    }
+
+    public int count(Class<?> entityClass) {
+        return 0;
+    }
+
 
     public void update(Object obj) {
         // go to DB to table = obj.getClass at PK = obj id
