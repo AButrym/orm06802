@@ -20,4 +20,7 @@ public class Animal {
     @NonNull String name;
     @Column(name="birth_date")
     LocalDate birthDate;
+
+    @ManyToOne(name="zoo_id")
+    Zoo zoo;
 }

@@ -34,5 +34,21 @@ public class MainClient {
 
         ormManager.remove(theZoo); // send delete to DB and set id to null
         System.out.println(theZoo.getId()); // null
+
+
+    }
+
+    public static void testManyToOne() {
+        var ormManager = new OrmManager("H2schema");
+        ormManager.registerEntities(Zoo.class, Animal.class);
+
+        var zoo = new Zoo("Kharkiv Zoo");
+        var crocodile = new Animal("Gena");
+        var strange = new Animal("Cheburashka");
+        zoo.getAnimals().add(crocodile);
+        assert crocodile.getZoo() == zoo; // orm has set it
+//        crocodile.setZoo(zoo);
+        zoo.getAnimals().add(strange);
+        ormManager.persist(zoo); // change table zoo and table animal
     }
 }

@@ -9,6 +9,9 @@ import orm.annotation.Entity;
 import orm.annotation.Id;
 import orm.annotation.Table;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @Entity
@@ -22,4 +25,7 @@ public class Zoo {
     @Column(name="title")
     @NonNull
     String name;
+
+    @OneToMany(mappedBy="zoo")
+    List<Animal> animals = new ArrayList<>();
 }
